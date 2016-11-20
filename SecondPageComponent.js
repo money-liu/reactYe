@@ -3,7 +3,7 @@ const USER_MODELS = {
     2: { name: '晴明大大', age: 25 }
 };
 
-import React from 'react';
+import React, { Component } from 'react';
 import {
     View,
     Navigator,
@@ -11,9 +11,9 @@ import {
     Text,
 } from 'react-native';
 
-import FirstPageComponent from './FirstPageComponent';
+import TressPageComponent from './TressPageComponent';
 
-export default class SecondPageComponent extends React.Component {
+export default class SecondPageComponent extends Component {
 
     constructor(props) {
         super(props);
@@ -32,15 +32,18 @@ export default class SecondPageComponent extends React.Component {
     _pressButton() {
             const { navigator } = this.props;
 
-            if(this.props.getUser) {
-                let user = USER_MODELS[this.props.id];
-    //回调传值给上个页面
-                this.props.getUser(user);
-            }
+    //         if(this.props.getUser) {
+    //             let user = USER_MODELS[this.props.id];
+    // //回调传值给上个页面
+    //             this.props.getUser(user);
+    //         }
 
             if(navigator) {
     //出栈，返回到上一页
-                navigator.pop();
+                navigator.push({
+                    name: 'TressPageComponent',
+                    component: TressPageComponent,
+                })
             }
     }
 
